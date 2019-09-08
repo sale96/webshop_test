@@ -6,8 +6,9 @@
     <?php else : ?>
         <p class="alert alert-danger"><?= Sessions::getError() ?></p>
     <?php endif; ?>
+    <?php Sessions::destroyError(); ?>
 <?php elseif(Sessions::isSuccess()) : ?>
 
-    <p class="alert alert-success"><?= Sessions::setSuccess(); ?></p>
-
+    <p class="alert alert-success"><?= Sessions::getSuccess(); ?></p>
+    <?php Sessions::destroySuccess(); ?>
 <?php endif; ?>

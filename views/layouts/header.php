@@ -13,4 +13,5 @@
 
 <?php require FILE_ROOT . 'views/includes/navbar.php'?>
 <div class="container pt-5">
+    <?php include 'views/includes/messages.php'; ?>
 

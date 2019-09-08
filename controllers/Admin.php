@@ -80,6 +80,26 @@ class Admin extends Controller
     }
 
     public function update($id){
-        $this->view('admin/update');
+        $product = $this->model('products/ProductModel');
+        $data['product'] = $product->getSingle($id);
+        $data['id'] = $id;
+        if(isset($_POST['product-submit'])){
+            $name = $_POST['product-name'];
+            $quantity = $_POST['product-quantity'];
+            $price = $_POST['product-price'];
+            $desc = $_POST['product-desc'];
+
+            if(empty($name) || empty($quantity) || empty($price) || empty($desc)){
+                Sessions::setError('Fields must not be empty.');
+                $this->view('admin/update', $data);
+            }else{
+                if($product->update($_POST, $id)){
+                    Sessions::setSuccess('Successfuly updated product.');
+                    $this->view('admin/update', $data);
+                }
+            }
+        }else{
+            $this->view('admin/update', $data);
+        }
     }
 }

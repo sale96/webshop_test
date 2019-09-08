@@ -51,10 +51,10 @@ class ProductModel
         $query = "UPDATE products SET product_name = :name, product_price = :price, product_desc = :desc, product_quantity = :quan WHERE product_id = :id";
         $prepare = $this->connection->prepare($query);
 
-        $prepare->bindParam(':name', $response['product_name']);
-        $prepare->bindParam(':price', $response['product_price']);
-        $prepare->bindParam(':desc', $response['product_desc']);
-        $prepare->bindParam(':quan', $response['product_quantity']);
+        $prepare->bindParam(':name', $response['product-name']);
+        $prepare->bindParam(':price', $response['product-price']);
+        $prepare->bindParam(':desc', $response['product-desc']);
+        $prepare->bindParam(':quan', $response['product-quantity']);
         $prepare->bindParam(':id', $id);
 
         return $prepare->execute();

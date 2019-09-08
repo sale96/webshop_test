@@ -6,7 +6,7 @@
                     <img class="card-img" src="<?= $product->image_location != null ? $product->image_location : 'http://placehold.it/250x250' ?>" alt="<?= $product->image_alt ?>">
                     <div class="card-body col-8">
                         <h3><?= $product->product_name ?></h3>
-                        <p><?= $product->product_desc ?></p>
+                        <p><?= strlen($product->product_desc) > 35 ? substr($product->product_desc, 0, 35). '...' : $product->product_desc ?></p>
                         <a href="<?= URL_ROOT ?>?page=Products/single/<?= $product->product_id ?>" class="btn btn-outline-primary">See more</a>
                     </div>
                 </div>
