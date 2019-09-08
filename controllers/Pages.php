@@ -6,9 +6,11 @@
  * Time: 1:00 PM
  */
 
-class Pages
+class Pages extends Controller
 {
-    public function index(){
 
+    public function index(){
+        //Loading view from Controller class
+        $this->view('pages/index');
     }
 }

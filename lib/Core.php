@@ -23,8 +23,8 @@ class Core
         $this->current_controller = new $this->current_controller;
 
         //checking if method exists, if not default is index
-        if(isset($link[1])){
-            if(method_exists($this->current_controller, $link[1])){
+        if(isset($link[1])) {
+            if (method_exists($this->current_controller, $link[1])) {
                 $this->current_method = $link[1];
                 unset($link[1]);
             }
