@@ -41,9 +41,30 @@ class ProductModel
     }
 
     public function add($request){
-        $query = 'INSERT INTO products (product_name, product_price, product_price, product_quantity) VALUES(?,?,?,?)';
+        $query = 'INSERT INTO products (product_name, product_desc, product_price, product_quantity) VALUES(?,?,?,?)';
         $prepare = $this->connection->prepare($query);
 
         return $prepare->execute($request);
+    }
+
+    public function update($response, $id){
+        $query = "UPDATE products SET product_name = :name, product_price = :price, product_desc = :desc, product_quantity = :quan WHERE product_id = :id";
+        $prepare = $this->connection->prepare($query);
+
+        $prepare->bindParam(':name', $response['product_name']);
+        $prepare->bindParam(':price', $response['product_price']);
+        $prepare->bindParam(':desc', $response['product_desc']);
+        $prepare->bindParam(':quan', $response['product_quantity']);
+        $prepare->bindParam(':id', $id);
+
+        return $prepare->execute();
+    }
+
+    public function delete($id){
+        $query = "DELETE FROM products WHERE product_id = :id";
+        $prep = $this->connection->prepare($query);
+        $prep->bindParam(':id', $id);
+
+        return $prep->execute();
     }
 }
