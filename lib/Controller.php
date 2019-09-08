@@ -24,11 +24,17 @@ class Controller
     }
 
     public function view($view, $data = []){
+        //Basic header layout
+        require 'views/layouts/header.php';
+
         //Checking if model exists
         if(file_exists('views/' . $view . '.php')){
             require 'views/' . $view . '.php';
         }else{
             echo 'View does not exist.';
         }
+
+        //Basic footer layout
+        require 'views/layouts/footer.php';
     }
 }

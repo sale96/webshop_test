@@ -34,7 +34,7 @@ class Core
         $this->args = $link ? array_values($link) : [];
 
         //Now to call everything
-        spl_autoload_register([$this->current_controller, $this->current_method], $this->args);
+        call_user_func_array([$this->current_controller, $this->current_method], $this->args);
     }
 
     //Function for getting link eg. index.php?page=Pages/index/1
