@@ -11,7 +11,6 @@ class Products extends Controller
     }
 
     public function index(){
-
         $data['products'] = $this->products->getAll();
         $this->view('products/index', $data);
     }

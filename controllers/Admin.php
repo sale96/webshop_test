@@ -59,4 +59,9 @@ class Admin extends Controller
         }
     }
 
+    public function products(){
+        $this->view('admin/products');
+    }
+
+
 }
