@@ -8,5 +8,17 @@
 
 class Database
 {
+    private $connection;
 
+    public function __construct()
+    {
+        try{
+            $dsn = 'mysql:host=' .HOST. ';dbname='.DBNAME;
+            $this->connection = new PDO($dsn, USER, PASSWORD);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
 }
