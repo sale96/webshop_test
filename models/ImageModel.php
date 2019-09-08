@@ -71,7 +71,26 @@ class ImageModel
                 }
             }
         }
+    }
 
-        return false;
+    public function deleteImage($id){
+        $query = "SELECT image_location FROM images WHERE image_id = ?";
+        $prepare = $this->connection->prepare($query);
+
+        if(!$prepare->execute([$id])){
+            if($prepare->rowCount() == 1){
+
+                $data = $prepare->fetch();
+
+                if(file_exists($data->image_location)){
+                    unlink($data->image_location);
+                    $query = "DELETE FROM images WHERE image_id = ?";
+                    $prepare = $this->connection->prepare($query);
+
+                    return $prepare->execute([$id]);
+                }
+
+            }
+        }
     }
 }

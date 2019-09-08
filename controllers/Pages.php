@@ -13,4 +13,8 @@ class Pages extends Controller
         //Loading view from Controller class
         $this->view('pages/index');
     }
+
+    public function about(){
+        $this->view('pages/about');
+    }
 }
