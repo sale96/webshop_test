@@ -20,11 +20,22 @@ class ProductModel
         }
     }
 
+    /*
+     *
+     *
+     * GETTING ALL PRODUCTS FROM DATABASE
+     *
+     */
     public function getAll(){
         $query = "SELECT * FROM products p LEFT JOIN product_image pi ON p.product_id = pi.product_id LEFT JOIN images i ON pi.image_id = i.image_id";
         return $this->connection->query($query)->fetchAll();
     }
-
+    /*
+     *
+     *
+     * GETTING SINGLE PRODUCT FROM DATABASE
+     *
+     */
     public function getSingle($id){
         $query = "SELECT * FROM products p LEFT JOIN product_image pi ON p.product_id = pi.product_id LEFT JOIN images i ON pi.image_id = i.image_id WHERE p.product_id = :id";
         $prepare = $this->connection->prepare($query);
@@ -40,6 +51,12 @@ class ProductModel
         }
     }
 
+    /*
+ *
+ *
+ * CREATING PRODUCT AND STORING TO DATABASE
+ *
+ */
     public function add($request){
         $query = 'INSERT INTO products (product_name, product_desc, product_price, product_quantity) VALUES(?,?,?,?)';
         $prepare = $this->connection->prepare($query);
@@ -47,6 +64,12 @@ class ProductModel
         return $prepare->execute($request);
     }
 
+    /*
+     *
+     *
+     * UPDATING PRODUCT IN DATABASE
+     *
+     */
     public function update($response, $id){
         $query = "UPDATE products SET product_name = :name, product_price = :price, product_desc = :desc, product_quantity = :quan WHERE product_id = :id";
         $prepare = $this->connection->prepare($query);
@@ -59,7 +82,12 @@ class ProductModel
 
         return $prepare->execute();
     }
-
+    /*
+     *
+     *
+     * DELETING PRODUCT FROM DATABASE
+     *
+     */
     public function delete($id){
         $query = "DELETE FROM products WHERE product_id = :id";
         $prep = $this->connection->prepare($query);

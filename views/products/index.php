@@ -1,5 +1,7 @@
 <div class="row">
+    <!-- if products exist -->
     <?php if(isset($data['products'])) : ?>
+        <!--    Checking if there are more then 0 products    -->
         <?php if(count($data['products']) > 0) : ?>
             <?php foreach($data['products'] as $product) : ?>
                 <div class="card" style="width: 18rem; margin-right: 3px;">
@@ -12,9 +14,12 @@
                 </div>
             <?php endforeach; ?>
         <?php else : ?>
+
+        <!--   if there are 0 products prints this message     -->
         <p class="lead">No products found.</p>
         <?php endif; ?>
     <?php else : ?>
+    <!--  if products don't exist prints error  -->
     <p class="lead">Error loading products.</p>
     <?php endif; ?>
 </div>

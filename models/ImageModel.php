@@ -26,6 +26,14 @@ class ImageModel
         }
     }
 
+
+    /*
+     *
+     *
+     * SETTING PARAMS FOR ONE IMAGE
+     *
+     */
+
     public function setParams($image){
         $this->name = $image['name'];
         $this->tmp_name = $image['tmp_name'];
@@ -33,6 +41,14 @@ class ImageModel
         $this->size = $image['size'];
         $this->errors = $image['error'];
     }
+
+
+    /*
+     *
+     *
+     * CHECKING ERRORS AND UPLOADING IMAGE TO DATABASE
+     *
+     */
 
     public function checkForErrorsAndUpload($location, $alt){
         if(empty($this->name) || empty($this->tmp_name) || empty($this->size) || empty($this->type)){
@@ -73,6 +89,12 @@ class ImageModel
         }
     }
 
+    /*
+     *
+     *
+     * DELETING IMAGE FROM DATABASE AND FROM STORED DIRECTORY
+     *
+     */
     public function deleteImage($id){
         $query = "SELECT image_location FROM images WHERE image_id = ?";
         $prepare = $this->connection->prepare($query);

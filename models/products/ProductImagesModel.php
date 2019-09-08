@@ -20,6 +20,13 @@ class ProductImagesModel
         }
     }
 
+    /*
+     *
+     *
+     * STORING RELATION BETWEEN IMAGE AND PRODUCT INSIDE DATABASE
+     *
+     */
+
     public function add($product_id, $image_id = 1){
         $query = 'INSERT INTO product_image(product_id, image_id) VALUES(?,?)';
         $prepare = $this->connection->prepare($query);

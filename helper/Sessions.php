@@ -8,6 +8,14 @@
 
 class Sessions
 {
+    /*
+     *
+     *
+     * FOR EASIER WORKING WITH SESSIONS AND FOR ELIMINATING MISS SPELLINGS
+     *
+     */
+
+
     //ERROR MESSAGES
     public static function isError(){
         return isset($_SESSION['error']);

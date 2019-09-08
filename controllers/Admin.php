@@ -8,7 +8,13 @@
 
 class Admin extends Controller
 {
-
+    /*
+     *
+     *
+     * INDEX METHOD FOR INSERTING PRODUCTS/IMAGES AND RELATION BETWEEN BOTH, CHECKING FOR EMPTY FIELDS
+     * USES MODELS FOR DATABASE STUFF
+     *
+     */
     public function index(){
         if(isset($_POST['product-submit'])){
             $name = $_POST['product-name'];
@@ -59,12 +65,24 @@ class Admin extends Controller
         }
     }
 
+    /*
+     *
+     *
+     * PRODUCTS METHOD GIVE US TABLE OF ALL PRODUCTS WITH AN OPTION TO GO REMOVE AND UPDATE BOTH
+     *
+     */
     public function products(){
         $products = $this->model('products/ProductModel');
         $data['products'] = $products->getAll();
         $this->view('admin/products', $data);
     }
 
+    /*
+     *
+     *
+     * REMOVING PRODUCTS FROM DATABASE, ID COMES FROM PRODUCTS METHOD INSIDE VIEW
+     *
+     */
     public function remove($id){
         $product = $this->model('products/ProductModel');
         if($product->delete($id)){
@@ -79,6 +97,13 @@ class Admin extends Controller
 
     }
 
+
+    /*
+     *
+     *
+     * UPDATE METHOD FOR CONTROLLING VIEW AND GETTING MODEL FOR UPDATE
+     *
+     */
     public function update($id){
         $product = $this->model('products/ProductModel');
         $data['product'] = $product->getSingle($id);
