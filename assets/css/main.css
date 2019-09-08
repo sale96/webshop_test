@@ -1,0 +1,24 @@
+.navbar-admin{
+    width: 100%;
+    box-shadow: 2px 2px 9px -7px #999;
+}
+.navbar-admin ul{
+    list-style-type: none;
+}
+
+.navbar-admin ul li{
+    display: inline;
+}
+
+.navbar-admin ul li a{
+    display: inline-block;
+    padding: 10px;
+    color: #000;
+}
+.navbar-admin ul li.navbar-spec a{
+    border: 1px solid #ddd;
+}
+.navbar-admin ul li a:hover{
+    text-decoration: none;
+    color: #444;
+}

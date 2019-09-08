@@ -3,7 +3,7 @@
         <?php if(count($data['products']) > 0) : ?>
             <?php foreach($data['products'] as $product) : ?>
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img" src="<?= $product->image_location ?>" alt="<?= $product->image_alt ?>">
+                    <img class="card-img" src="<?= $product->image_location != null ? $product->image_location : 'http://placehold.it/250x250' ?>" alt="<?= $product->image_alt ?>">
                     <div class="card-body col-8">
                         <h3><?= $product->product_name ?></h3>
                         <p><?= $product->product_desc ?></p>

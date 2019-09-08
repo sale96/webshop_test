@@ -1,5 +1,5 @@
 <?php
-define('URL_ROOT', 'http://localhost/stuntcoders/');
+define('URL_ROOT', 'http://localhost/stuntcoders/index.php');
 define('FILE_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/stuntcoders/');
 
 define('SITENAME', 'StuntCoders Test');

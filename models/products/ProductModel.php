@@ -21,12 +21,12 @@ class ProductModel
     }
 
     public function getAll(){
-        $query = "SELECT * FROM products p JOIN product_image pi ON p.product_id = pi.product_id JOIN images i ON pi.image_id = i.image_id";
+        $query = "SELECT * FROM products p LEFT JOIN product_image pi ON p.product_id = pi.product_id LEFT JOIN images i ON pi.image_id = i.image_id";
         return $this->connection->query($query)->fetchAll();
     }
 
     public function getSingle($id){
-        $query = "SELECT * FROM products p JOIN product_image pi ON p.product_id = pi.product_id JOIN images i ON pi.image_id = i.image_id WHERE p.product = :id";
+        $query = "SELECT * FROM products p LEFT JOIN product_image pi ON p.product_id = pi.product_id LEFT JOIN images i ON pi.image_id = i.image_id WHERE p.product_id = :id";
         $prepare = $this->connection->prepare($query);
 
         $prepare->bindParam(':id', $id);

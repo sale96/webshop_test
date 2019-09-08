@@ -17,6 +17,7 @@ class Products extends Controller
     }
 
     public function single($id){
-        $this->view('products/single');
+        $data['product'] = $this->products->getSingle($id);
+        $this->view('products/single', $data);
     }
 }
