@@ -26,7 +26,7 @@ class ImageModel
         }
     }
 
-    public function getParams($image){
+    public function setParams($image){
         $this->name = $image['name'];
         $this->tmp_name = $image['tmp_name'];
         $this->type = $image['type'];
@@ -46,7 +46,7 @@ class ImageModel
                 $errors = [];
 
 
-                if($this->size >= $accept_types){
+                if($this->size >= $max_size){
                     $errors[] = 'Image must be under 3MB of size.';
                 }
 
