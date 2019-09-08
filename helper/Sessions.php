@@ -9,6 +9,9 @@
 class Sessions
 {
     //ERROR MESSAGES
+    public static function isError(){
+        return isset($_SESSION['error']);
+    }
     public static function setError($err){
         $_SESSION['error'] = $err;
     }
@@ -22,6 +25,9 @@ class Sessions
     }
 
     //Success messages
+    public static function isSuccess(){
+        return isset($_SESSION['success']);
+    }
     public static function setSuccess($message){
         $_SESSION['success'] = $message;
     }

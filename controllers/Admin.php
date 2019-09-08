@@ -60,8 +60,26 @@ class Admin extends Controller
     }
 
     public function products(){
-        $this->view('admin/products');
+        $products = $this->model('products/ProductModel');
+        $data['products'] = $products->getAll();
+        $this->view('admin/products', $data);
     }
 
+    public function remove($id){
+        $product = $this->model('products/ProductModel');
+        if($product->delete($id)){
+            Sessions::setSuccess('Product deleted');
+            header('Location: index.php?page=Admin/products');
+            exit();
+        }else{
+            Sessions::setError('Error deleting product');
+            header('Location: index.php?page=Admin/products');
+            exit();
+        }
 
+    }
+
+    public function update($id){
+        $this->view('admin/update');
+    }
 }
