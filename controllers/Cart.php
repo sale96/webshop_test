@@ -71,9 +71,24 @@ class Cart extends Controller
     }
 
     public function remove($id){
-        Sessions::destroyKeyCart($id);
-        echo json_encode(Sessions::getCart());
-        http_response_code(202);
+
+        $quantity = (int)$_POST['quantity'];
+
+        $query = "UPDATE products SET product_quantity = product_quantity + ? WHERE product_id = ?";
+        $prepare = $this->connection->prepare($query);
+        $responseCode = 404;
+
+        if($prepare->execute([$quantity, $id])){
+            $responseCode = 202;
+            Sessions::destroyKeyCart($id);
+        }else{
+            $responseCode = 500;
+        }
+
+        if(Sessions::isCart()){
+            echo json_encode(Sessions::getCart());
+        }
+        http_response_code($responseCode);
     }
 
     public function destroy(){

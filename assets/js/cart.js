@@ -18,7 +18,6 @@ $(document).ready(function(){
             dataType: 'json',
             method: 'post',
             success: function(data){
-                console.log(data.quantity);
                 let output = '';
                 let total = 0;
                 for(let i = 0; i < data.product.length; i++){
@@ -30,7 +29,7 @@ $(document).ready(function(){
                     output += '<h4 class="">'+data.product[i].name+'</h4>';
                     output += '</div></div></td>';
                     output += '<td data-th="Price">'+data.product[i].price+'</td>';
-                    output += '<td data-th="Quantity"><p>'+data.product[i].quantity+'</p></td>';
+                    output += '<td data-th="Quantity"><input type="hidden" name="quantity-js" id="quantity-js" value="'+data.product[i].quantity+'"/><p>'+data.product[i].quantity+'</p></td>';
                     output += '<td data-th="Subtotal" class="text-center">' + data.product[i].quantity * data.product[i].price + '</td>';
                     output += '<td class="actions" data-th=""><button onclick="deleteCartItem('+data.product[i].id+');" class="btn btn-danger btn-sm cart-item-delete">Delete</button></td>';
                     output += '</tr>';

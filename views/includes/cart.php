@@ -25,6 +25,7 @@
             </td>
             <td data-th="Price"><?= $item['price']; ?></td>
             <td data-th="Quantity">
+                <input type="hidden" name="quantity-js" id="quantity-js" value="<?= $item['quantity']; ?>">
                 <p><?= $item['quantity']; ?></p>
             </td>
             <td data-th="Subtotal" class="text-center"><?= $item['quantity'] * $item['price']; ?></td>
