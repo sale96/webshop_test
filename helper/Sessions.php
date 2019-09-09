@@ -47,4 +47,36 @@ class Sessions
     public static function destroySuccess(){
         unset($_SESSION['success']);
     }
+
+
+    //Cart sessions
+    public static function setCart($value, $key = 0){
+        $_SESSION['cart'][$key] = $value;
+    }
+
+    public static function isCart(){
+        return isset($_SESSION['cart']);
+    }
+
+    public static function getCart(){
+        return $_SESSION['cart'];
+    }
+
+    public static function incrementCart($val, $i){
+        $_SESSION['cart'][$i]['quantity'] += $val;
+    }
+
+    public static function destroyCart(){
+        unset($_SESSION['cart']);
+    }
+
+    public static function destroyKeyCart($index){
+        foreach($_SESSION['cart'] as $key => $value){
+            if($_SESSION['cart'][$key]['id'] == $index){
+                unset($_SESSION['cart'][$key]);
+            }
+        }
+
+        $_SESSION['cart'] = array_values($_SESSION['cart']);
+    }
 }

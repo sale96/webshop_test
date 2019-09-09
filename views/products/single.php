@@ -9,6 +9,9 @@
             <p>Quantity: <?= $data['product']->product_quantity ?></p>
             <p class="alert alert-success"><?= $data['product']->product_price ?> RSD</p>
             <?php if($data['product']->product_quantity != 0) : ?>
+                <input type="hidden" id="hidden_name" value="<?= $data['product']->product_name ?>">
+                <input type="hidden" id="hidden_price" value="<?= $data['product']->product_price ?>">
+                <input type="hidden" id="hidden_quantity" value="1">
                 <button id="cart-button" data-value="<?= $data['product']->product_id ?>" class="btn btn-lg btn-block btn-primary">Add to the cart</button>
             <?php else: ?>
                 <p class="lead">Currently we don't have this product at our disposal.</p>

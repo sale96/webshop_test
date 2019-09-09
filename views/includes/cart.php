@@ -9,53 +9,40 @@
             <th style="width:10%"></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="cart-body">
+        <?php if(Sessions::isCart()) : ?>
+        <?php $total = 0; ?>
+        <?php foreach(Sessions::getCart() as $item) : ?>
+
+        <?php $total = $total + ($item['quantity'] * $item['price']); ?>
         <tr>
             <td data-th="Product">
                 <div class="row">
-                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                    <div class="col-sm-10 pl-4">
-                        <h4 class="">Product 1</h4>
-                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                    <div class="col-sm-12 pl-4">
+                        <h4 class=""><?= $item['name']; ?></h4>
                     </div>
                 </div>
             </td>
-            <td data-th="Price">$1.99</td>
+            <td data-th="Price"><?= $item['price']; ?></td>
             <td data-th="Quantity">
-                <p>1</p>
+                <p><?= $item['quantity']; ?></p>
             </td>
-            <td data-th="Subtotal" class="text-center">1.99</td>
+            <td data-th="Subtotal" class="text-center"><?= $item['quantity'] * $item['price']; ?></td>
             <td class="actions" data-th="">
                 <button class="btn btn-danger btn-sm">Delete</button>
             </td>
         </tr>
-        <tr>
-            <td data-th="Product">
-                <div class="row">
-                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                    <div class="col-sm-10 pl-4">
-                        <h4 class="">Product 1</h4>
-                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-            </td>
-            <td data-th="Price">$1.99</td>
-            <td data-th="Quantity">
-                <p>1</p>
-            </td>
-            <td data-th="Subtotal" class="text-center">1.99</td>
-            <td class="actions" data-th="">
-                <button class="btn btn-danger btn-sm">Delete</button>
-            </td>
-        </tr>
+        <?php endforeach; ?>
+
         </tbody>
         <tfoot>
         <tr>
             <td></td>
             <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+            <td class="hidden-xs text-center"><strong>Total:  <span id="cart-total-sum"><?= $total; ?></span></strong></td>
             <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
         </tr>
         </tfoot>
+        <?php endif; ?>
     </table>
 </div>
