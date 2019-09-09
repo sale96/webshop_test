@@ -72,7 +72,7 @@ class Sessions
 
     public static function destroyKeyCart($index){
         foreach($_SESSION['cart'] as $key => $value){
-            if($_SESSION['cart'][$key]['id'] == $index){
+            if($value['id'] == $index){
                 unset($_SESSION['cart'][$key]);
             }
         }

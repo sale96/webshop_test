@@ -49,7 +49,15 @@ class Cart extends Controller
     }
 
     public function remove($id){
+        Sessions::destroyKeyCart($id);
+        echo json_encode(Sessions::getCart());
+        http_response_code(202);
+    }
 
+    public function destroy(){
+        Sessions::destroyCart();
+        echo json_encode(['message' => 'Success']);
+        http_response_code(202);
     }
 
 }

@@ -29,20 +29,21 @@
             </td>
             <td data-th="Subtotal" class="text-center"><?= $item['quantity'] * $item['price']; ?></td>
             <td class="actions" data-th="">
-                <button class="btn btn-danger btn-sm">Delete</button>
+                <button onclick="deleteCartItem(<?= $item['id'] ?>);" class="btn btn-danger btn-sm cart-item-delete">Delete</button>
             </td>
         </tr>
         <?php endforeach; ?>
+        <?php endif; ?>
 
         </tbody>
         <tfoot>
         <tr>
-            <td></td>
+            <td><button onclick="cartdelete();" id="cart-delete"" class="btn btn-danger btn-sm">Delete all</button></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total:  <span id="cart-total-sum"><?= $total; ?></span></strong></td>
-            <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+            <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                </td>
         </tr>
         </tfoot>
-        <?php endif; ?>
     </table>
 </div>
