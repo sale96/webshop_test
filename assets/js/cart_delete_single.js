@@ -1,6 +1,4 @@
 function deleteCartItem(id){
-    console.log(123);
-
     $.ajax({
         url: 'index.php?page=Cart/remove/'+id,
         dataType: 'json',

@@ -3,10 +3,10 @@
         <div class="col-4">
             <img class="rounded mw-100" src="<?= $data['product']->image_location; ?>" alt="<?= $data['product']->image_alt; ?>">
         </div>
-        <div class="col-8">
+        <div id="single-product-info" class="col-8">
             <h3><?= $data['product']->product_name ?></h3>
             <p><?= $data['product']->product_desc ?></p>
-            <p>Quantity: <?= $data['product']->product_quantity ?></p>
+            <p>Quantity: <span id="quantity-value"><?= $data['product']->product_quantity ?></span></p>
             <p class="alert alert-success"><?= $data['product']->product_price ?> RSD</p>
             <?php if($data['product']->product_quantity != 0) : ?>
                 <input type="hidden" id="hidden_name" value="<?= $data['product']->product_name ?>">

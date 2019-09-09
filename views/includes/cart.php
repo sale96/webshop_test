@@ -1,4 +1,4 @@
-<div class="cart">
+<div class="cart mt-5">
     <table id="cart" class="table table-hover table-condensed">
         <thead>
         <tr>
@@ -10,8 +10,8 @@
         </tr>
         </thead>
         <tbody id="cart-body">
-        <?php if(Sessions::isCart()) : ?>
         <?php $total = 0; ?>
+        <?php if(Sessions::isCart()) : ?>
         <?php foreach(Sessions::getCart() as $item) : ?>
 
         <?php $total = $total + ($item['quantity'] * $item['price']); ?>
@@ -41,8 +41,9 @@
             <td><button onclick="cartdelete();" id="cart-delete"" class="btn btn-danger btn-sm">Delete all</button></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total:  <span id="cart-total-sum"><?= $total; ?></span></strong></td>
-            <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
-                </td>
+            <td>
+                <a href="#" id="button-check-out" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+            </td>
         </tr>
         </tfoot>
     </table>
