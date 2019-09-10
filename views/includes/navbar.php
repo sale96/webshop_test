@@ -21,9 +21,6 @@
         </ul>
         <ul class="navbar-nav float-right">
             <li class="nav-item">
-                <button class="btn btn-warning" id="cart-toggle">Cart</button>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=User/login">Log in</a>
             </li>
 

@@ -43,7 +43,7 @@
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total:  <span id="cart-total-sum"><?= $total; ?></span></strong></td>
             <td>
-                <a href="#" id="button-check-out" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                <a href="<?= URL_ROOT ?>?page=Cart_show/index" id="button-check-out" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
             </td>
         </tr>
         </tfoot>
