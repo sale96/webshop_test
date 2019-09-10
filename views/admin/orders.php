@@ -1,3 +1,5 @@
+
+<?php include 'views/includes/admin.nav.php'; ?>
 <h3>Orders</h3>
 
 <?php if(isset($data['order'])) : ?>

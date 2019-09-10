@@ -15,11 +15,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=Pages/about">About</a>
             </li>
+            <?php if(Sessions::isLogged()) : ?>
+            <?php
+                $logged = Sessions::getLogged('role_id');
+                if($logged == 1) :
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=Admin/index">Admin panel</a>
             </li>
+                <?php endif; ?>
+            <?php endif; ?>
         </ul>
         <ul class="navbar-nav float-right">
+            <?php if(!Sessions::isLogged()) : ?>
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=User/login">Log in</a>
             </li>
@@ -28,9 +36,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=User/register">Register</a>
             </li>
+            <?php else : ?>
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ROOT; ?>?page=User/logout">Log out</a>
             </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

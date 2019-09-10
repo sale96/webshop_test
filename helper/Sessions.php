@@ -79,4 +79,24 @@ class Sessions
 
         $_SESSION['cart'] = array_values($_SESSION['cart']);
     }
+
+    //USER SESSIONS
+    public static function isLogged(){
+        return isset($_SESSION['logged']);
+    }
+
+    public static function setLogged($id, $role_id = 0){
+        $_SESSION['logged'] = [
+            'id' => $id,
+            'role_id' => $role_id
+        ];
+    }
+
+    public static function getLogged($param){
+        return $_SESSION['logged'][$param];
+    }
+
+    public static function destroyLogged(){
+        unset($_SESSION['logged']);
+    }
 }

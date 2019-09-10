@@ -8,6 +8,19 @@
 
 class Admin extends Controller
 {
+
+    public function __construct()
+    {
+        if(Sessions::isLogged()){
+            if($this->user->getUserData()->role_id != 1){
+                header('Location: index.php');
+                exit();
+            }
+        }else{
+            header('Location: index.php');
+            exit();
+        }
+    }
     /*
      *
      *
