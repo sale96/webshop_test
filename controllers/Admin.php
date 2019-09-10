@@ -127,4 +127,12 @@ class Admin extends Controller
             $this->view('admin/update', $data);
         }
     }
+
+    public function orders(){
+        $query = "SELECT *, po.quantity as item_quantity FROM orders o INNER JOIN product_orders po ON o.order_id = po.order_id INNER JOIN products p ON po.product_id = p.product_id";
+        global $database;
+        $connection = $database->getConnection();
+        $data['order'] = $connection->query($query)->fetchAll();
+        $this->view('admin/orders', $data);
+    }
 }
