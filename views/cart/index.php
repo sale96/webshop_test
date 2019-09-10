@@ -3,18 +3,18 @@
         <h3>Enter your credentials:</h3>
         <div class="form-group">
             <label for="name">Name and last name:</label>
-            <input type="text" name="name" id="name" class="form-control">
+            <input type="text" name="name" id="name" class="form-control" value="<?= isset($data['name']) ? $data['name'] : '' ?>">
         </div>
         <div class="form-group">
             <label for="email">Email adress:</label>
-            <input type="email" name="email" id="email" class="form-control">
+            <input type="email" name="email" id="email" class="form-control" value="<?= isset($data['email']) ? $data['email'] : '' ?>">
         </div>
         <div class="form-group">
             <label for="address">Address:</label>
-            <input type="text" name="address" id="address" class="form-control">
+            <input type="text" name="address" id="address" class="form-control" value="<?= isset($data['address']) ? $data['address'] : '' ?>">
         </div>
         <div class="form-group">
-            <button class="btn btn-success">Send your order</button>
+            <button name="send-data-cart" class="btn btn-success">Send your order</button>
         </div>
     </form>
     <div class="col-5">
